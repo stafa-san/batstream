@@ -27,7 +27,7 @@ export default async function BarnPage() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-10 gap-y-4 border-b border-edge/60 px-5 py-4 sm:px-8">
           <div className="min-w-0">
             <StatusLine site={site} night={night} />
-            <p className="mt-1 text-[0.85rem] text-ink-3">
+            <p className="mt-1 hidden text-[0.85rem] text-ink-3 md:block">
               {site.name} · location protected
               {!site.streamUrl ? " · demo footage until the barn camera is connected" : ""}
             </p>
