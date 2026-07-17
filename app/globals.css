@@ -1,3 +1,111 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============ Paper tokens — UI-DESIGN.md §2. The only mode. ============ */
+:root {
+  --paper: #f8f3e9;
+  --paper-2: #f1e9d8;
+  --kraft: #e4d7bc;
+  --edge: #d6c6a6;
+  --ink: #221e18;
+  --ink-2: #6a6154;
+  --ink-3: #9a9082;
+  --night: #131020; /* the window only */
+  --ember: #d9741f;
+  --ember-deep: #a8500c;
+  --dusk: #3d5a80;
+  --sage: #71856a;
+  --live: #c0392b;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-atkinson), system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    /* Paper never scrolls sideways — rotated scraps and pinned cards
+       must not widen the page. */
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-weight: 700;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px dashed var(--ember-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--kraft);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-atkinson), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  /* Paper on paper — 1px edge + tight warm shadow. Never a glow. */
+  .paper-card {
+    background: var(--paper-2);
+    border: 1px solid var(--edge);
+    box-shadow: 0 2px 0 var(--edge), 0 6px 14px rgba(34, 30, 24, 0.06);
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ============ Motion — gated twice (toggle + OS preference) ============ */
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============ Barn animations (all gated by [data-motion]) ============ */
+@keyframes ink-land {
+  0% { opacity: 0; transform: scale(1.7); }
+  60% { opacity: 1; }
+  100% { transform: scale(1); }
+}
+.ink-land { animation: ink-land 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+@keyframes live-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.live-breathe { animation: live-breathe 3s ease-in-out infinite; }
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-counter {
+  to { transform: rotate(-360deg); }
+}

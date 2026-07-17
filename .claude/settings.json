@@ -38,7 +38,25 @@
       "Bash(mv \"docs/New/DESIGN \\(1\\).md\" docs/DESIGN.md)",
       "Bash(mv docs/New/UI-DESIGN1.md docs/UI-DESIGN.md)",
       "Bash(npm run *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const p=require\\('dotenv/package.json'\\); console.log\\(p.version\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css\")",
+      "Bash(curl -s -o /dev/null -w \"GET / -> %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(ls /Applications/ | grep -iE \"chrome|chromium|edge|arc|brave\" ; which chromium chrome google-chrome 2>/dev/null; echo done)",
+      "Read(//Applications/**)",
+      "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless --disable-gpu --screenshot=barn.png --window-size=1440,2400 --hide-scrollbars \"http://localhost:3000/\")",
+      "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless --disable-gpu --screenshot=barn2.png --window-size=1440,1400 --hide-scrollbars \"http://localhost:3000/\")",
+      "Bash(curl -s -o /dev/null -w \"/log -> %{http_code}\\\\n\" http://localhost:3000/log)",
+      "Bash(curl -s -o /dev/null -w \"/log/2026-07-09 -> %{http_code}\\\\n\" http://localhost:3000/log/2026-07-09)",
+      "Bash(curl -s -o /dev/null -w \"/log/2026-02-01 -> %{http_code} \\(expect 404\\)\\\\n\" http://localhost:3000/log/2026-02-01)",
+      "Bash(curl -s -o /dev/null -w \"/board -> %{http_code}\\\\n\" http://localhost:3000/board)",
+      "Bash(curl -s -X POST http://localhost:3000/api/stamp -H 'content-type: application/json' -d '{\"siteSlug\":\"winton-woods-bat-barn\"}' -w \" \\(stamp api: %{http_code}, expect 503 without admin creds\\)\\\\n\")",
+      "Bash(curl -s -o /tmp/log.html -w \"time: %{time_total}s size: %{size_download}\\\\n\" http://localhost:3000/log)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(grep -o '<head>.\\\\{0,200\\\\}')"
     ]
   }
 }
