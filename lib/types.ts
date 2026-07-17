@@ -100,6 +100,15 @@ export interface NightDetail {
   clips: Clip[];
 }
 
+export interface ChatMessage {
+  id: string;
+  siteId: string;
+  name: string;
+  text: string;
+  at: string; // ISO datetime
+  own?: boolean;
+}
+
 /** A single stamp landing, for the live ink (subscribeToStampPulse). */
 export interface StampPulse {
   bucketStart: string;

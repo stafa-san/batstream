@@ -219,3 +219,18 @@ real height (window ≈ 60–70% of the hero at any aspect); ground/trees/grass
 pinned to the bottom; flock on an undistorted top-anchored slice overlay.
 Status line + stamp desk merged into one continuous paper-2 band directly
 under the ground strip, so hero → status → desk reads as one construction.
+
+**v2.4 (2026-07-17) — the Porch, media chrome, classical wall.**
+(1) **The Porch** (`ChatPanel.tsx`): a Twitch-layout live-chat rail beside
+the window, in paper materials — inked names colored by hash through
+dusk/sage/ember-deep, timestamps, no avatars, kindness line under the
+input. New contract functions `subscribeToChat` / `sendChatMessage`
+(demo simulation inside the seam; `/api/chat` + read-open `chat`
+collection in real mode). (2) The window gets a **media bar** — the one
+real thing gets real chrome: play/pause, volume (real stream only),
+LIVE dot + uptime, watchers, fullscreen, on a hover/touch scrim.
+(3) The wall goes **classical-calm** per research: one stage-light radial
+gradient (corners ~8% darker), near-subliminal irregular plank seams
+(5% ink), a ghosted engraved moon as the single motif, natural-history
+**plate rules** around the portal with an engraved sill caption
+("FIG. 1 — THE HAYLOFT, LIVE TONIGHT"), fewer tufts, thinner swirls.

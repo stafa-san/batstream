@@ -3,12 +3,26 @@
 import { useEffect, useState } from "react";
 import { subscribeToWatchers } from "@/lib/data";
 
-export default function WatcherCount({ slug }: { slug: string }) {
+export default function WatcherCount({
+  slug,
+  bare = false,
+}: {
+  slug: string;
+  /** bare: plain text for the player bar (no paper scrap). */
+  bare?: boolean;
+}) {
   const [n, setN] = useState<number | null>(null);
 
   useEffect(() => subscribeToWatchers(slug, setN), [slug]);
 
   if (n === null) return null;
+  if (bare) {
+    return (
+      <span aria-live="polite" className="tnum whitespace-nowrap text-[0.8rem] font-bold text-paper/90">
+        {n.toLocaleString()} <span className="font-normal opacity-75">watching</span>
+      </span>
+    );
+  }
   return (
     <span
       aria-live="polite"

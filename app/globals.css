@@ -133,3 +133,7 @@
 [data-motion="off"] .bats-fly { display: none; }
 .bats-static { display: none; }
 [data-motion="off"] .bats-static { display: block; }
+
+/* ============ Player bar ============ */
+.player-btn:focus-visible { outline-color: #f8f3e9; }
+.player-vol { accent-color: var(--ember); }

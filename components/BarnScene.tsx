@@ -137,12 +137,63 @@ export default function BarnScene({
         height: HERO_H,
         minHeight: "500px",
         containerType: "size",
-        // the wall: kraft planks, infinite in every direction
+        // the wall: one calm sheet, lit from the window out (corners ~8% darker)
         backgroundColor: "var(--kraft)",
         backgroundImage:
-          "repeating-linear-gradient(90deg, transparent 0 84px, rgba(34,30,24,0.09) 84px 88px)",
+          "radial-gradient(120% 105% at 50% 45%, #EBE1C9 0%, #E4D7BC 45%, #D5C5A0 100%)",
       }}
     >
+      {/* plank seams — near-subliminal, irregular widths */}
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden="true"
+      >
+        {[9, 17.5, 29, 41, 48.5, 59, 70.5, 79, 91].map((x) => (
+          <line
+            key={x}
+            x1={x}
+            y1="0"
+            x2={x}
+            y2="100"
+            stroke="var(--ink)"
+            strokeOpacity="0.05"
+            strokeWidth="1.5"
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+      </svg>
+
+      {/* one ghosted engraved moon — the single classical motif */}
+      <div
+        className="absolute"
+        style={{ right: "4%", top: "15cqh", height: "clamp(80px, 16cqh, 150px)" }}
+        aria-hidden="true"
+      >
+        <svg viewBox="-60 -60 120 120" className="h-full w-auto" style={{ opacity: 0.2 }}>
+          <g fill="none" stroke="var(--ink)" strokeWidth="1.6">
+            <circle r="34" />
+            <circle r="41" strokeDasharray="2.5 5" strokeWidth="1" />
+            <path d="M-10,-30 a 32,32 0 1 0 0,60 a 25,25 0 1 1 0,-60" strokeWidth="1.3" />
+            {Array.from({ length: 12 }, (_, i) => {
+              const a = (i * Math.PI) / 6;
+              const c = Math.cos(a);
+              const sn = Math.sin(a);
+              return (
+                <line
+                  key={i}
+                  x1={c * 47}
+                  y1={sn * 47}
+                  x2={c * 55}
+                  y2={sn * 55}
+                  strokeWidth="1.2"
+                />
+              );
+            })}
+          </g>
+        </svg>
+      </div>
       {/* ============ roofline — pinned top, always visible ============ */}
       <svg
         viewBox="0 0 1600 160"
@@ -182,9 +233,24 @@ export default function BarnScene({
       >
         <svg
           viewBox={`0 0 ${P.w} ${P.h}`}
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 h-full w-full overflow-visible"
           aria-hidden="true"
         >
+          {/* natural-history plate rules around the whole portal */}
+          {[
+            [1.052, 2.2, 0.5],
+            [1.032, 1.2, 0.45],
+          ].map(([k, w, o]) => (
+            <path
+              key={k}
+              d="M95,0 L1045,0 L1140,95 L1140,592 L1045,687 L95,687 L0,592 L0,95 Z"
+              fill="none"
+              stroke="var(--ink)"
+              strokeWidth={w}
+              opacity={o}
+              transform={`translate(${570 * (1 - k)} ${343.5 * (1 - k)}) scale(${k})`}
+            />
+          ))}
           <g stroke="var(--ink)" strokeWidth="5" strokeLinejoin="round">
             <polygon points="95,0 1045,0 1030,85 110,85" fill="#c4b189" />
             <polygon points="95,687 1045,687 1030,602.5 110,602.5" fill="#ece0c2" />
@@ -211,6 +277,20 @@ export default function BarnScene({
             strokeWidth="11"
             strokeLinejoin="round"
           />
+          {/* plate caption, engraved into the sill */}
+          <text
+            x="570"
+            y="678"
+            textAnchor="middle"
+            fontFamily="var(--font-atkinson), sans-serif"
+            fontWeight="700"
+            fontSize="15"
+            letterSpacing="2.5"
+            fill="var(--ink)"
+            opacity="0.55"
+          >
+            FIG. 1 — THE HAYLOFT, LIVE TONIGHT
+          </text>
           {/* hay pulley on the lintel */}
           <path d="M550,2 L590,2 L570,34 Z" fill="var(--ink)" />
           <line x1="570" y1="30" x2="570" y2="62" stroke="var(--ink)" strokeWidth="4.5" />
@@ -243,7 +323,7 @@ export default function BarnScene({
         style={{ height: "clamp(22px, 4.5cqh, 40px)", backgroundColor: "#d8c8a4" }}
         aria-hidden="true"
       />
-      {[8, 24, 47, 72, 90].map((left) => (
+      {[10, 52, 88].map((left) => (
         <div
           key={left}
           className="absolute"
@@ -280,7 +360,7 @@ export default function BarnScene({
         className="pointer-events-none absolute inset-0 h-full w-full"
         aria-hidden="true"
       >
-        <g fill="none" stroke="var(--edge)" strokeWidth="4" strokeLinecap="round" opacity="0.85">
+        <g fill="none" stroke="var(--edge)" strokeWidth="3" strokeLinecap="round" opacity="0.6">
           <path d="M120,74 q 84,-42 172,-14 q -24,16 -46,10 q 14,-2 20,-12" />
           <path d="M1180,50 q 92,-30 158,26 q -26,4 -46,-8 q 14,10 26,10" />
         </g>

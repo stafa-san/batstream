@@ -16,6 +16,7 @@ service cloud.firestore {
     match /clips/{doc}     { allow read: if true; allow write: if false; }
     match /species/{doc}   { allow read: if true; allow write: if false; }
     match /viewerGeo/{doc} { allow read: if true; allow write: if false; }
+    match /chat/{doc}      { allow read: if true; allow write: if false; }
 
     // ---- Everything else (stamps, keeps: raw provenance with clientHash) ----
     // Not readable, not writable. The tally is the public view of stamps.

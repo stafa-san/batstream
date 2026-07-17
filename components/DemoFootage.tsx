@@ -6,8 +6,13 @@ import { useEffect, useRef } from "react";
 // warm shapes circling *inside* the barn (they fly inside — docs/DESIGN.md
 // §2), on the real night. Honest about itself via a small inked label.
 // Freezes to a single frame when motion is off.
-export default function DemoFootage() {
+export default function DemoFootage({ paused = false }: { paused?: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const pausedRef = useRef(paused);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   useEffect(() => {
     const cv = ref.current;
@@ -92,7 +97,7 @@ export default function DemoFootage() {
 
     function loop(t: number) {
       const motionOn = document.documentElement.dataset.motion !== "off";
-      if (motionOn) frame(t);
+      if (motionOn && !pausedRef.current) frame(t);
       raf = requestAnimationFrame(loop);
     }
     frame(1200); // always paint one frame (motion-off case)
