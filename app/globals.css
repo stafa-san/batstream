@@ -109,3 +109,27 @@
 @keyframes orbit-counter {
   to { transform: rotate(-360deg); }
 }
+
+/* ============ Barn scene: flying bats ============ */
+.fwing-l {
+  transform-box: fill-box;
+  transform-origin: 92% 50%;
+  animation: flap-l 0.42s ease-in-out infinite alternate;
+}
+.fwing-r {
+  transform-box: fill-box;
+  transform-origin: 8% 50%;
+  animation: flap-r 0.42s ease-in-out infinite alternate;
+}
+@keyframes flap-l {
+  from { transform: rotate(12deg); }
+  to { transform: rotate(-26deg); }
+}
+@keyframes flap-r {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(26deg); }
+}
+/* Motion off → freeze the sky: swap the SMIL flock for a still one. */
+[data-motion="off"] .bats-fly { display: none; }
+.bats-static { display: none; }
+[data-motion="off"] .bats-static { display: block; }

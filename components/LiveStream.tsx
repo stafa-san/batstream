@@ -11,6 +11,9 @@ import WatcherCount from "./WatcherCount";
 // Not border-radius, not a rounded rect: an SVG clip with 2–4px of
 // irregular wobble, and an inner shadow along the cut so it reads as
 // depth *through* the page. This detail is the design.
+//
+// `frameless` embeds the same window inside the BarnScene illustration:
+// it fills its positioned parent and drops the standalone caption.
 const CUT = handCutRectPath(20260717);
 
 type StreamState = "loading" | "playing" | "shuttered";
@@ -18,15 +21,18 @@ type StreamState = "loading" | "playing" | "shuttered";
 export default function LiveStream({
   site,
   night,
+  frameless = false,
 }: {
   site: Site;
   night: Night;
+  frameless?: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasStream = Boolean(site.streamUrl);
   const [state, setState] = useState<StreamState>(
     site.status === "Live" ? "loading" : "shuttered",
   );
+  const clipId = frameless ? "window-cut-scene" : "window-cut";
 
   useEffect(() => {
     if (!hasStream || site.status !== "Live") {
@@ -63,19 +69,22 @@ export default function LiveStream({
   });
 
   return (
-    <figure className="relative m-0">
+    <figure className={frameless ? "relative m-0 h-full w-full" : "relative m-0"}>
       {/* The cut — shared by the footage layer and the inner shadow. */}
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          <clipPath id="window-cut" clipPathUnits="objectBoundingBox">
+          <clipPath id={clipId} clipPathUnits="objectBoundingBox">
             <path d={CUT} />
           </clipPath>
         </defs>
       </svg>
 
       <div
-        className="relative aspect-video w-full bg-night"
-        style={{ clipPath: "url(#window-cut)" }}
+        className={
+          (frameless ? "relative h-full w-full" : "relative aspect-video w-full") +
+          " bg-night"
+        }
+        style={{ clipPath: `url(#${clipId})` }}
         role="group"
         aria-label={`Live window into ${site.name}. ${
           site.isLocationProtected ? "Location protected for conservation." : ""
@@ -114,14 +123,28 @@ export default function LiveStream({
 
         {/* LIVE — a hand-drawn ember mark, not a Twitch pill. */}
         {state !== "shuttered" ? (
-          <div className="absolute left-4 top-4 flex -rotate-2 items-center gap-2">
-            <svg viewBox="0 0 20 20" className="live-breathe h-3.5 w-3.5 text-live" aria-hidden="true">
+          <div
+            className={
+              "absolute flex -rotate-2 items-center gap-2 " +
+              (frameless ? "left-3 top-3" : "left-4 top-4")
+            }
+          >
+            <svg
+              viewBox="0 0 20 20"
+              className={"live-breathe text-live " + (frameless ? "h-3 w-3" : "h-3.5 w-3.5")}
+              aria-hidden="true"
+            >
               <path
                 fill="currentColor"
                 d="M10 1.6 C 14 .8, 18.6 4.2, 18.3 9.4 C 18 15 14.4 18.6 9.6 18.2 C 4.8 17.8, 1.4 14.6, 1.8 9.2 C 2.1 4.6, 6 2.4, 10 1.6 Z"
               />
             </svg>
-            <span className="text-[0.74rem] font-bold uppercase tracking-[0.2em] text-paper">
+            <span
+              className={
+                "font-bold uppercase tracking-[0.2em] text-paper " +
+                (frameless ? "text-[0.66rem]" : "text-[0.74rem]")
+              }
+            >
               Live
             </span>
           </div>
@@ -129,7 +152,7 @@ export default function LiveStream({
 
         {/* Watchers — ink on a scrap of paper, bottom-right. */}
         {state !== "shuttered" ? (
-          <div className="absolute bottom-4 right-4">
+          <div className={"absolute " + (frameless ? "bottom-3 right-3" : "bottom-4 right-4")}>
             <WatcherCount slug={site.slug} />
           </div>
         ) : null}
@@ -145,17 +168,19 @@ export default function LiveStream({
         />
       </div>
 
-      <figcaption className="mt-2 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-[0.85rem] text-ink-3">
-        <span>
-          {site.name} · {site.isLocationProtected ? "location protected" : site.locationLabel}
-        </span>
-        {!hasStream ? (
-          <span>Demo footage until the barn camera is connected.</span>
-        ) : null}
-        <span className="ml-auto">
-          If the picture stops, it restarts on its own — refresh if it doesn&apos;t.
-        </span>
-      </figcaption>
+      {!frameless ? (
+        <figcaption className="mt-2 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-[0.85rem] text-ink-3">
+          <span>
+            {site.name} · {site.isLocationProtected ? "location protected" : site.locationLabel}
+          </span>
+          {!hasStream ? (
+            <span>Demo footage until the barn camera is connected.</span>
+          ) : null}
+          <span className="ml-auto">
+            If the picture stops, it restarts on its own — refresh if it doesn&apos;t.
+          </span>
+        </figcaption>
+      ) : null}
     </figure>
   );
 }

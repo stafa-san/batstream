@@ -56,7 +56,9 @@
       "Bash(curl -s -X POST http://localhost:3000/api/stamp -H 'content-type: application/json' -d '{\"siteSlug\":\"winton-woods-bat-barn\"}' -w \" \\(stamp api: %{http_code}, expect 503 without admin creds\\)\\\\n\")",
       "Bash(curl -s -o /tmp/log.html -w \"time: %{time_total}s size: %{size_download}\\\\n\" http://localhost:3000/log)",
       "Bash(curl -s http://localhost:3000/)",
-      "Bash(grep -o '<head>.\\\\{0,200\\\\}')"
+      "Bash(grep -o '<head>.\\\\{0,200\\\\}')",
+      "Bash(curl -s -o /dev/null -w \"localhost:3000 -> %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3000/)"
     ]
   }
 }
