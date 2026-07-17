@@ -53,9 +53,7 @@ export default async function BarnPage() {
             <BatGlyph className="mb-3 h-6 w-10 text-ink" />
             <h3 className="text-lg font-black">Watch the window</h3>
             <p className="mt-1.5 text-[0.95rem] text-ink-2">
-              A thermal camera looks into the barn all night. Bats show up as
-              warm shapes, circling the roost as the light falls. Nobody has
-              ever counted this colony — the people watching are the count.
+              A thermal camera looks into the barn all night.
             </p>
           </div>
           <div className="paper-card p-5">
@@ -67,7 +65,7 @@ export default async function BarnPage() {
             <p className="mt-1.5 text-[0.95rem] text-ink-2">
               Something moves — you stamp. Your mark lands on tonight&apos;s
               sheet with everyone else&apos;s, and together they draw the
-              night. Stamps touch data, never the animals.
+              night.
             </p>
           </div>
         </div>
