@@ -12,7 +12,6 @@ export default function Footer() {
         </p>
         <PartnerStrip />
         <div className="flex flex-wrap gap-x-8 gap-y-2 text-[0.92rem] text-ink-2">
-          <span>Counting toward NABat, the North American Bat Monitoring Program</span>
           <span className="text-sage">
             ◈ Roost location protected for conservation
           </span>

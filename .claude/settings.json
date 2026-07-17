@@ -59,7 +59,8 @@
       "Bash(grep -o '<head>.\\\\{0,200\\\\}')",
       "Bash(curl -s -o /dev/null -w \"localhost:3000 -> %{http_code}\\\\n\" http://localhost:3000/)",
       "Bash(curl -s -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3000/)",
-      "WebFetch(domain:www.polygon-treehouse.com)"
+      "WebFetch(domain:www.polygon-treehouse.com)",
+      "Bash(git ls-remote *)"
     ]
   }
 }

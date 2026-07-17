@@ -23,7 +23,7 @@ const atkinson = Atkinson_Hyperlegible({
 export const metadata: Metadata = {
   title: "The Bat Barn",
   description:
-    "Nobody knows how many bats live in this barn. Watch the window, stamp what you see — the people watching are the count.",
+    "Nobody knows how many bats live in this barn. Watch the window and stamp what you see.",
 };
 
 // Set data-motion before paint: the toggle wins, then the OS preference.

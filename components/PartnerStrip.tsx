@@ -27,7 +27,7 @@ export default function PartnerStrip({
       {!compact ? (
         <p className="text-[0.88rem] text-ink-2">
           Great Parks of Hamilton County × the University of Cincinnati —
-          Dr.&nbsp;Joseph&nbsp;S.&nbsp;Johnson, Odunayo, and the project team.
+          Dr.&nbsp;Joseph&nbsp;S.&nbsp;Johnson, Odunayo, Mustapha, and the project team.
         </p>
       ) : null}
     </div>
