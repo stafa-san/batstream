@@ -210,3 +210,12 @@ takes ~60% of the stage. Roof fascia crosses the top with sky, swirls and
 the flock in the corners; hay pulley over the loft; ground strip, grass and
 curly trees crop in at the bottom. The wall is kraft so the footage stays
 the darkest thing on the page.
+
+**v2.3 (2026-07-17) — edge-anchored hero.** v2.2's cover-crop sacrificed the
+roofline at wide viewports. The scene is now layered and edge-anchored:
+wall = infinite CSS-planked backdrop; roofline pinned full-width to the top
+(non-scaling fascia stroke); portal sized in container units from the hero's
+real height (window ≈ 60–70% of the hero at any aspect); ground/trees/grass
+pinned to the bottom; flock on an undistorted top-anchored slice overlay.
+Status line + stamp desk merged into one continuous paper-2 band directly
+under the ground strip, so hero → status → desk reads as one construction.
