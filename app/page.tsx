@@ -1,16 +1,17 @@
-// Placeholder page. The Barn (window + stamp + tally strip) is milestone 5;
-// the design foundation (paper tokens, Fraunces/Atkinson, grain) is milestone 4.
-// This page stays deliberately unstyled until then.
+// Placeholder until milestone 5 — but on the real paper foundation now.
 export default function Home() {
   return (
-    <main style={{ padding: "4rem 1.5rem", maxWidth: "42rem", margin: "0 auto" }}>
-      <h1>The Bat Barn</h1>
-      <p>
-        Phase 1 scaffold — milestone 1 of 9 (see <code>docs/DESIGN.md</code> §10).
+    <main className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+      <p className="eyebrow">Winton Woods, Ohio · a Great Parks barn</p>
+      <h1 className="mt-3 max-w-[16ch] text-[clamp(2.6rem,5.5vw,4.5rem)] font-black">
+        How many bats live in this barn?
+      </h1>
+      <p className="mt-6 font-display text-[clamp(4rem,9vw,7rem)] font-black leading-none text-ink-3">
+        —
       </p>
-      <p>
-        How many bats live in this barn? — Nobody knows yet. That&apos;s the
-        whole point.
+      <p className="mt-6 max-w-[52ch] text-lg text-ink-2">
+        Nobody knows. Not Great Parks, not us. That&apos;s why you&apos;re
+        here. The window opens in milestone 5.
       </p>
     </main>
   );
