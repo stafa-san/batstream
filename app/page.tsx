@@ -21,24 +21,25 @@ export default async function BarnPage() {
   return (
     <main>
       {/* ============ The barn scene (md+) / plain window (mobile) ============ */}
-      <section className="pt-4 sm:pt-6">
+      <section>
         <div className="hidden md:block">
           <BarnScene site={site} night={night} />
         </div>
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 md:hidden">
+        <div className="mx-auto max-w-6xl px-5 pt-4 sm:px-8 md:hidden">
           <LiveStream site={site} night={night} />
         </div>
-        <div className="mx-auto mt-3 flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-1 px-5 sm:px-8">
+      </section>
+
+      {/* ============ Status + the stamp desk — one continuous band ============ */}
+      <section className="border-b border-edge bg-paper-2 pb-10">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-edge/60 px-5 py-3 sm:px-8">
           <StatusLine site={site} night={night} />
           <p className="hidden text-[0.85rem] text-ink-3 md:block">
             {site.name} · location protected
             {!site.streamUrl ? " · demo footage until the barn camera is connected" : ""}
           </p>
         </div>
-      </section>
-
-      {/* ============ The stamp desk ============ */}
-      <section className="mt-8 border-y border-edge bg-paper-2 py-10">
+        <div className="pt-10">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 md:grid-cols-[minmax(280px,1fr)_minmax(0,1.8fr)]">
             <div className="flex flex-col items-center gap-8">
@@ -47,6 +48,7 @@ export default async function BarnPage() {
             </div>
             <TallySheet night={night} slug={site.slug} />
           </div>
+        </div>
         </div>
       </section>
 
