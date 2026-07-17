@@ -53,9 +53,9 @@ export default async function LogPage() {
                 ) : null}
                 <Link
                   href={`/log/${night.date}`}
-                  className="paper-card grid grid-cols-[92px_1fr] items-center gap-x-4 gap-y-1 p-3 no-underline hover:bg-kraft sm:grid-cols-[110px_minmax(0,200px)_1fr_auto]"
+                  className="paper-card grid grid-cols-[104px_1fr] items-center gap-x-4 gap-y-1 p-3 no-underline hover:bg-kraft sm:grid-cols-[110px_minmax(0,200px)_1fr_auto]"
                 >
-                  <span className="font-bold">
+                  <span className="whitespace-nowrap font-bold">
                     {d.toLocaleDateString("en-US", {
                       weekday: "short",
                       month: "short",

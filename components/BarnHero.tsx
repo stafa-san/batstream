@@ -47,8 +47,8 @@ export default function BarnHero({
         <div
           id="porch-panel"
           className={
-            "absolute inset-y-0 right-0 w-[clamp(300px,24vw,380px)] shadow-[-8px_0_24px_rgba(34,30,24,0.12)] transition-transform duration-300 ease-thunk " +
-            (porchOpen ? "translate-x-0" : "translate-x-full")
+            "absolute inset-y-0 right-0 w-[clamp(300px,24vw,380px)] shadow-[-8px_0_24px_rgba(34,30,24,0.12)] transition-[transform,visibility] duration-300 ease-thunk " +
+            (porchOpen ? "visible translate-x-0" : "invisible translate-x-full")
           }
           aria-hidden={!porchOpen}
         >

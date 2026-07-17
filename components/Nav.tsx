@@ -16,9 +16,9 @@ export default function Nav() {
   const path = usePathname();
   return (
     <header className="border-b border-edge bg-paper">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-2 px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-4 gap-y-1.5 px-4 py-3 sm:gap-x-6 sm:gap-y-2 sm:px-8 sm:py-4">
         <Link href="/" className="group flex items-baseline gap-3">
-          <span className="font-display text-2xl font-black tracking-tight">
+          <span className="font-display text-xl font-black tracking-tight sm:text-2xl">
             The Bat Barn
           </span>
           <span className="hidden text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink-3 sm:inline">
@@ -35,7 +35,7 @@ export default function Nav() {
                 href={l.href}
                 aria-current={active ? "page" : undefined}
                 className={
-                  "rounded-sm px-2.5 py-1 text-[0.95rem] font-bold " +
+                  "rounded-sm px-2 py-0.5 text-[0.9rem] font-bold sm:px-2.5 sm:py-1 sm:text-[0.95rem] " +
                   (active
                     ? "bg-kraft text-ink underline decoration-ember decoration-2 underline-offset-4"
                     : "text-ink-2 hover:bg-paper-2 hover:text-ink")
