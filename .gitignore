@@ -31,3 +31,4 @@ yarn-error.log*
 
 # firebase service account keys — never commit
 *service-account*.json
+.env*
