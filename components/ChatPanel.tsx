@@ -26,10 +26,12 @@ export default function ChatPanel({
   slug,
   className = "",
   style,
+  onClose,
 }: {
   slug: string;
   className?: string;
   style?: React.CSSProperties;
+  onClose?: () => void;
 }) {
   const [msgs, setMsgs] = useState<ChatMessage[]>([]);
   const [text, setText] = useState("");
@@ -86,6 +88,16 @@ export default function ChatPanel({
       <header className="flex items-baseline gap-2.5 border-b border-edge bg-paper-2 px-4 py-2.5">
         <h2 className="font-display text-lg font-black leading-none">The Porch</h2>
         <p className="text-[0.78rem] text-ink-3">everyone watching, talking</p>
+        {onClose ? (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close the Porch"
+            className="ml-auto grid h-6 w-6 place-items-center text-lg font-bold leading-none text-ink-2 hover:text-ink"
+          >
+            ×
+          </button>
+        ) : null}
       </header>
 
       <ol

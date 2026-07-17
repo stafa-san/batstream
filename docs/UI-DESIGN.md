@@ -234,3 +234,10 @@ gradient (corners ~8% darker), near-subliminal irregular plank seams
 (5% ink), a ghosted engraved moon as the single motif, natural-history
 **plate rules** around the portal with an engraved sill caption
 ("FIG. 1 — THE HAYLOFT, LIVE TONIGHT"), fewer tufts, thinner swirls.
+
+**v2.5 (2026-07-17) — the essential hero.** The barn drawing is retired at
+the user's direction: the hero is now the paper page itself under one soft
+spotlight, the hand-cut window dead center at ~86% of the hero height, and
+the flock circling it. No caption, no frame, no illustration furniture.
+The Porch is hidden by default — a paper button (top-right) slides it in
+over the scene; the window never moves.
