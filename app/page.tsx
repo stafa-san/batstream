@@ -1,7 +1,5 @@
 import { getSite, getTonight, SITE_SLUG } from "@/lib/data";
-import BarnScene from "@/components/BarnScene";
-import ChatPanel from "@/components/ChatPanel";
-import LiveStream from "@/components/LiveStream";
+import BarnHero from "@/components/BarnHero";
 import StampButton from "@/components/StampButton";
 import TallySheet from "@/components/TallySheet";
 import StatusLine from "@/components/StatusLine";
@@ -21,22 +19,8 @@ export default async function BarnPage() {
 
   return (
     <main>
-      {/* ============ The barn + the porch (md+) / stacked (mobile) ============ */}
-      <section>
-        <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_clamp(300px,23vw,360px)]">
-          <BarnScene site={site} night={night} />
-          <ChatPanel
-            slug={site.slug}
-            style={{ height: "min(80vh, 900px)", minHeight: "500px" }}
-          />
-        </div>
-        <div className="md:hidden">
-          <div className="mx-auto max-w-6xl px-5 pt-4 sm:px-8">
-            <LiveStream site={site} night={night} />
-          </div>
-          <ChatPanel slug={site.slug} className="mt-4 h-[380px] border-t" />
-        </div>
-      </section>
+      {/* ============ The window + the porch (hidden until summoned) ============ */}
+      <BarnHero site={site} night={night} />
 
       {/* ============ Status + the stamp desk — one continuous band ============ */}
       <section className="border-b border-edge bg-paper-2 pb-10">
