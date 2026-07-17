@@ -4,6 +4,9 @@ import { getNight, SITE_SLUG } from "@/lib/data";
 import TallySheet from "@/components/TallySheet";
 import ClipCard from "@/components/ClipCard";
 
+// Revalidate every 5 minutes — "tonight" must roll over daily.
+export const revalidate = 300;
+
 export function generateMetadata({ params }: { params: { date: string } }) {
   return { title: `${params.date} — The Log — The Bat Barn` };
 }

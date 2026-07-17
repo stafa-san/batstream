@@ -30,6 +30,9 @@
     font-size: 17px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    /* Paper never scrolls sideways — rotated scraps and pinned cards
+       must not widen the page. */
+    overflow-x: clip;
   }
   h1,
   h2,

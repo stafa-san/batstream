@@ -6,6 +6,9 @@ import StatusLine from "@/components/StatusLine";
 import KeepButton from "@/components/KeepButton";
 import BatGlyph from "@/components/BatGlyph";
 
+// Revalidate every 5 minutes — "tonight" must roll over daily.
+export const revalidate = 300;
+
 // THE BARN (docs/DESIGN.md §8) — the window, the stamp, tonight's tally.
 // Everything else is secondary.
 export default async function BarnPage() {
@@ -23,7 +26,7 @@ export default async function BarnPage() {
           How many bats live in this barn?
         </h1>
         {/* The answer is a blank — a held breath, not a number. */}
-        <div className="mt-2 flex items-end gap-6">
+        <div className="mt-2 flex flex-wrap items-end gap-x-6 gap-y-1">
           <p
             aria-label="Unknown — nobody has counted"
             className="border-b-2 border-dashed border-edge pb-1 pr-10 font-display text-[clamp(4rem,9vw,7rem)] font-black leading-[0.85] text-ink"

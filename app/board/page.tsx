@@ -1,6 +1,9 @@
 import { getClips, SITE_SLUG } from "@/lib/data";
 import ClipCard from "@/components/ClipCard";
 
+// Revalidate every 5 minutes — "tonight" must roll over daily.
+export const revalidate = 300;
+
 export const metadata = { title: "The Board — The Bat Barn" };
 
 // THE BOARD (docs/DESIGN.md §8): clips the crowd kept. No curator.

@@ -34,4 +34,9 @@ Security rules live in [`firebase/`](firebase/) — client writes are denied
 everywhere; deploy them before seeding (`firebase/README.md`).
 
 ## Build status
-Milestone 1 (scaffold) of 9 — see `docs/DESIGN.md` §10.
+All 9 milestones built (see `docs/DESIGN.md` §10). Runs fully on built-in
+demo fixtures until Firebase is seeded:
+
+1. Create the RTDB instance + a service-account key, fill `.env.local`
+2. Deploy rules: `firebase/` (client writes are denied everywhere)
+3. `npm run seed`, then set `NEXT_PUBLIC_FIREBASE_DATA_READY=true`

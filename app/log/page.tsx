@@ -2,6 +2,9 @@ import Link from "next/link";
 import { getNight, getSeason, SITE_SLUG } from "@/lib/data";
 import MiniTally from "@/components/MiniTally";
 
+// Revalidate every 5 minutes — "tonight" must roll over daily.
+export const revalidate = 300;
+
 export const metadata = { title: "The Log — The Bat Barn" };
 
 // THE LOG (docs/DESIGN.md §8): one page per night; the season is a shelf
