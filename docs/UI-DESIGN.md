@@ -201,3 +201,12 @@ the Motion toggle swaps the flock for a still one (`.bats-fly` /
 `.bats-static`). The stamp desk (stamp + keep + tally sheet) moves to its
 own section directly below. On <md viewports the scene yields to the plain
 window. The colony question lives on in the About page copy.
+
+**v2.2 (2026-07-17) — full-bleed perspective hero.** The diorama zooms in:
+an 80vh hero where the barn's gable wall bleeds past every edge (fixed-aspect
+1600×850 stage, cover-cropped). The hayloft is a one-point-perspective
+beveled portal — thick kraft frame faces receding toward a window that now
+takes ~60% of the stage. Roof fascia crosses the top with sky, swirls and
+the flock in the corners; hay pulley over the loft; ground strip, grass and
+curly trees crop in at the bottom. The wall is kraft so the footage stays
+the darkest thing on the page.

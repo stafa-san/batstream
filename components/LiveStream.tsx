@@ -126,12 +126,12 @@ export default function LiveStream({
           <div
             className={
               "absolute flex -rotate-2 items-center gap-2 " +
-              (frameless ? "left-3 top-3" : "left-4 top-4")
+              "left-4 top-4"
             }
           >
             <svg
               viewBox="0 0 20 20"
-              className={"live-breathe text-live " + (frameless ? "h-3 w-3" : "h-3.5 w-3.5")}
+              className={"live-breathe text-live h-3.5 w-3.5"}
               aria-hidden="true"
             >
               <path
@@ -142,7 +142,7 @@ export default function LiveStream({
             <span
               className={
                 "font-bold uppercase tracking-[0.2em] text-paper " +
-                (frameless ? "text-[0.66rem]" : "text-[0.74rem]")
+                "text-[0.74rem]"
               }
             >
               Live
@@ -152,7 +152,7 @@ export default function LiveStream({
 
         {/* Watchers — ink on a scrap of paper, bottom-right. */}
         {state !== "shuttered" ? (
-          <div className={"absolute " + (frameless ? "bottom-3 right-3" : "bottom-4 right-4")}>
+          <div className="absolute bottom-4 right-4">
             <WatcherCount slug={site.slug} />
           </div>
         ) : null}
