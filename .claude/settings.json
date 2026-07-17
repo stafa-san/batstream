@@ -60,7 +60,9 @@
       "Bash(curl -s -o /dev/null -w \"localhost:3000 -> %{http_code}\\\\n\" http://localhost:3000/)",
       "Bash(curl -s -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3000/)",
       "WebFetch(domain:www.polygon-treehouse.com)",
-      "Bash(git ls-remote *)"
+      "Bash(git ls-remote *)",
+      "Bash(gh pr create --base main --head dev --title 'Copy edits: remove Keep UI, trim explainers, credit Mustapha, drop NABat line' --body 'Five focused commits per direction: *)",
+      "Bash(gh pr *)"
     ]
   }
 }
