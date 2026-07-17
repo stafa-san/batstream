@@ -7,6 +7,7 @@
 // deterministic demo fixtures + simulation take over so the product is
 // always demoable. Components cannot tell the difference.
 import type {
+  ChatMessage,
   Clip,
   Night,
   NightDetail,
@@ -274,6 +275,28 @@ export function subscribeToStampPulse(
   return () => unsub();
 }
 
+export function subscribeToChat(
+  slug: string,
+  cb: (msgs: ChatMessage[]) => void,
+): Unsubscribe {
+  if (!firebaseReady()) return demoStore().subscribeChat(cb);
+  let unsub: Unsubscribe = () => {};
+  (async () => {
+    const { db } = await import("@/lib/firebase/client");
+    const { collection, limit, onSnapshot, orderBy, query } = await import(
+      "firebase/firestore"
+    );
+    unsub = onSnapshot(
+      query(collection(db(), "chat"), orderBy("at", "desc"), limit(60)),
+      (snap) => {
+        const msgs = snap.docs.map((d) => d.data() as ChatMessage).reverse();
+        cb(msgs);
+      },
+    );
+  })();
+  return () => unsub();
+}
+
 /* ============ writes — via app/api/* (Admin SDK), never client-side ============ */
 
 export async function recordStamp(slug: string): Promise<TallyState> {
@@ -299,4 +322,21 @@ export async function keepMoment(
   });
   if (!res.ok) throw new Error(`keep failed: ${res.status}`);
   return (await res.json()) as Clip;
+}
+
+export async function sendChatMessage(
+  slug: string,
+  name: string,
+  text: string,
+): Promise<void> {
+  if (!firebaseReady()) {
+    demoStore().sendChat(name, text);
+    return;
+  }
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ siteSlug: slug, name, text }),
+  });
+  if (!res.ok) throw new Error(`chat failed: ${res.status}`);
 }

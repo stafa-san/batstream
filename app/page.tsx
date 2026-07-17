@@ -1,5 +1,6 @@
 import { getSite, getTonight, SITE_SLUG } from "@/lib/data";
 import BarnScene from "@/components/BarnScene";
+import ChatPanel from "@/components/ChatPanel";
 import LiveStream from "@/components/LiveStream";
 import StampButton from "@/components/StampButton";
 import TallySheet from "@/components/TallySheet";
@@ -20,13 +21,20 @@ export default async function BarnPage() {
 
   return (
     <main>
-      {/* ============ The barn scene (md+) / plain window (mobile) ============ */}
+      {/* ============ The barn + the porch (md+) / stacked (mobile) ============ */}
       <section>
-        <div className="hidden md:block">
+        <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_clamp(300px,23vw,360px)]">
           <BarnScene site={site} night={night} />
+          <ChatPanel
+            slug={site.slug}
+            style={{ height: "min(80vh, 900px)", minHeight: "500px" }}
+          />
         </div>
-        <div className="mx-auto max-w-6xl px-5 pt-4 sm:px-8 md:hidden">
-          <LiveStream site={site} night={night} />
+        <div className="md:hidden">
+          <div className="mx-auto max-w-6xl px-5 pt-4 sm:px-8">
+            <LiveStream site={site} night={night} />
+          </div>
+          <ChatPanel slug={site.slug} className="mt-4 h-[380px] border-t" />
         </div>
       </section>
 
