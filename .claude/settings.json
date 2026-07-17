@@ -51,7 +51,9 @@
       "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless --disable-gpu --screenshot=barn2.png --window-size=1440,1400 --hide-scrollbars \"http://localhost:3000/\")",
       "Bash(curl -s -o /dev/null -w \"/log -> %{http_code}\\\\n\" http://localhost:3000/log)",
       "Bash(curl -s -o /dev/null -w \"/log/2026-07-09 -> %{http_code}\\\\n\" http://localhost:3000/log/2026-07-09)",
-      "Bash(curl -s -o /dev/null -w \"/log/2026-02-01 -> %{http_code} \\(expect 404\\)\\\\n\" http://localhost:3000/log/2026-02-01)"
+      "Bash(curl -s -o /dev/null -w \"/log/2026-02-01 -> %{http_code} \\(expect 404\\)\\\\n\" http://localhost:3000/log/2026-02-01)",
+      "Bash(curl -s -o /dev/null -w \"/board -> %{http_code}\\\\n\" http://localhost:3000/board)",
+      "Bash(curl -s -X POST http://localhost:3000/api/stamp -H 'content-type: application/json' -d '{\"siteSlug\":\"winton-woods-bat-barn\"}' -w \" \\(stamp api: %{http_code}, expect 503 without admin creds\\)\\\\n\")"
     ]
   }
 }
