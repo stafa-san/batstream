@@ -21,6 +21,8 @@ import { Site } from "@/lib/types";
 import * as fixtures from "./fixtures";
 import { demoStore } from "./demo-store";
 
+export { SITE_SLUG } from "./fixtures";
+
 function firebaseReady(): boolean {
   return Boolean(
     process.env.NEXT_PUBLIC_FIREBASE_API_KEY &&

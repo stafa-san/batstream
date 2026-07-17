@@ -43,7 +43,12 @@
       "Bash(node -e \"const p=require\\('dotenv/package.json'\\); console.log\\(p.version\\)\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000)",
       "Bash(curl -s http://localhost:3000)",
-      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css\")"
+      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css\")",
+      "Bash(curl -s -o /dev/null -w \"GET / -> %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(ls /Applications/ | grep -iE \"chrome|chromium|edge|arc|brave\" ; which chromium chrome google-chrome 2>/dev/null; echo done)",
+      "Read(//Applications/**)",
+      "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless --disable-gpu --screenshot=barn.png --window-size=1440,2400 --hide-scrollbars \"http://localhost:3000/\")",
+      "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless --disable-gpu --screenshot=barn2.png --window-size=1440,1400 --hide-scrollbars \"http://localhost:3000/\")"
     ]
   }
 }

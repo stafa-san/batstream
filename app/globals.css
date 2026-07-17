@@ -85,3 +85,24 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============ Barn animations (all gated by [data-motion]) ============ */
+@keyframes ink-land {
+  0% { opacity: 0; transform: scale(1.7); }
+  60% { opacity: 1; }
+  100% { transform: scale(1); }
+}
+.ink-land { animation: ink-land 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+@keyframes live-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.live-breathe { animation: live-breathe 3s ease-in-out infinite; }
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-counter {
+  to { transform: rotate(-360deg); }
+}
