@@ -1,0 +1,26 @@
+rules_version = '2';
+
+// Security model (docs/DESIGN.md §4): the browser reads public collections
+// directly; EVERY write is denied to clients. Writes happen exclusively via
+// the Firebase Admin SDK inside Vercel route handlers (app/api/*), which
+// bypasses these rules and applies its own rate-limiting and validation.
+// These rules ARE the backend security for Phase 1 — do not loosen them
+// "temporarily."
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- Public, read-only collections ----
+    match /sites/{doc}     { allow read: if true; allow write: if false; }
+    match /nights/{doc}    { allow read: if true; allow write: if false; }
+    match /tallies/{doc}   { allow read: if true; allow write: if false; }
+    match /clips/{doc}     { allow read: if true; allow write: if false; }
+    match /species/{doc}   { allow read: if true; allow write: if false; }
+    match /viewerGeo/{doc} { allow read: if true; allow write: if false; }
+
+    // ---- Everything else (stamps, keeps: raw provenance with clientHash) ----
+    // Not readable, not writable. The tally is the public view of stamps.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
