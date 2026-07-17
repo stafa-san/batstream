@@ -1,4 +1,5 @@
 import { getSite, getTonight, SITE_SLUG } from "@/lib/data";
+import BarnScene from "@/components/BarnScene";
 import LiveStream from "@/components/LiveStream";
 import StampButton from "@/components/StampButton";
 import TallySheet from "@/components/TallySheet";
@@ -9,8 +10,8 @@ import BatGlyph from "@/components/BatGlyph";
 // Revalidate every 5 minutes — "tonight" must roll over daily.
 export const revalidate = 300;
 
-// THE BARN (docs/DESIGN.md §8) — the window, the stamp, tonight's tally.
-// Everything else is secondary.
+// THE BARN (docs/DESIGN.md §8) — the illustrated barn with the live window
+// cut into its hayloft fills the top of the page. The stamp desk follows.
 export default async function BarnPage() {
   const [site, night] = await Promise.all([
     getSite(SITE_SLUG),
@@ -19,75 +20,37 @@ export default async function BarnPage() {
 
   return (
     <main>
-      {/* The hero number is a blank. */}
-      <section className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-8">
-        <p className="eyebrow">Winton Woods, Ohio · a Great Parks barn</p>
-        <h1 className="mt-3 max-w-[15ch] text-[clamp(2.6rem,5.5vw,4.5rem)] font-black">
-          How many bats live in this barn?
-        </h1>
-        {/* The answer is a blank — a held breath, not a number. */}
-        <div className="mt-2 flex flex-wrap items-end gap-x-6 gap-y-1">
-          <p
-            aria-label="Unknown — nobody has counted"
-            className="border-b-2 border-dashed border-edge pb-1 pr-10 font-display text-[clamp(4rem,9vw,7rem)] font-black leading-[0.85] text-ink"
-          >
-            —
-          </p>
-          <p className="pb-2 text-[0.85rem] font-bold uppercase tracking-[0.14em] text-ink-3">
-            no one has ever counted
+      {/* ============ The barn scene (md+) / plain window (mobile) ============ */}
+      <section className="pt-4 sm:pt-6">
+        <div className="hidden md:block">
+          <BarnScene site={site} night={night} />
+        </div>
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 md:hidden">
+          <LiveStream site={site} night={night} />
+        </div>
+        <div className="mx-auto mt-3 flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-1 px-5 sm:px-8">
+          <StatusLine site={site} night={night} />
+          <p className="hidden text-[0.85rem] text-ink-3 md:block">
+            {site.name} · location protected
+            {!site.streamUrl ? " · demo footage until the barn camera is connected" : ""}
           </p>
         </div>
-        <p className="mt-6 max-w-[54ch] text-lg text-ink-2">
-          Nobody knows. Not Great Parks, who built it. Not us. Until the
-          counting instruments exist, the people watching this window are the
-          only measurement there is. <span className="font-bold text-ink">That&apos;s you.</span>
-        </p>
       </section>
 
-      {/* The barn interior: rafters, the window, the stamp. */}
-      <section className="border-y border-edge bg-paper-2 py-10">
+      {/* ============ The stamp desk ============ */}
+      <section className="mt-8 border-y border-edge bg-paper-2 py-10">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          {/* rafter band */}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 1200 64"
-            preserveAspectRatio="none"
-            className="mb-6 h-10 w-full sm:h-14"
-          >
-            <rect x="0" y="46" width="1200" height="14" fill="var(--kraft)" stroke="var(--edge)" />
-            {[80, 320, 560, 800, 1040].map((x) => (
-              <g key={x}>
-                <polygon
-                  points={`${x},50 ${x + 60},0 ${x + 68},0 ${x + 8},50`}
-                  fill="var(--kraft)"
-                  stroke="var(--edge)"
-                />
-                <polygon
-                  points={`${x + 120},50 ${x + 60},0 ${x + 52},0 ${x + 112},50`}
-                  fill="var(--kraft)"
-                  stroke="var(--edge)"
-                />
-              </g>
-            ))}
-          </svg>
-
-          <StatusLine site={site} night={night} />
-
-          <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,1.9fr)_minmax(260px,1fr)]">
-            <LiveStream site={site} night={night} />
-            <div className="flex flex-col items-center gap-8 lg:pt-6">
+          <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 md:grid-cols-[minmax(280px,1fr)_minmax(0,1.8fr)]">
+            <div className="flex flex-col items-center gap-8">
               <StampButton slug={site.slug} />
               <KeepButton slug={site.slug} />
             </div>
-          </div>
-
-          <div className="mt-10">
             <TallySheet night={night} slug={site.slug} />
           </div>
         </div>
       </section>
 
-      {/* New here? Three honest sentences. */}
+      {/* ============ New here? Three honest sentences. ============ */}
       <section className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
         <div className="grid gap-5 sm:grid-cols-3">
           <div className="paper-card p-5">
@@ -95,7 +58,8 @@ export default async function BarnPage() {
             <h3 className="text-lg font-black">Watch the window</h3>
             <p className="mt-1.5 text-[0.95rem] text-ink-2">
               A thermal camera looks into the barn all night. Bats show up as
-              warm shapes, circling the roost as the light falls.
+              warm shapes, circling the roost as the light falls. Nobody has
+              ever counted this colony — the people watching are the count.
             </p>
           </div>
           <div className="paper-card p-5">

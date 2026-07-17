@@ -185,3 +185,19 @@ Component → file: window + states → `LiveStream.tsx` · stamp + thunk + ink 
 ## 10. The test
 
 If a screenshot of this could be mistaken for Twitch, Netflix, a SaaS dashboard, or any other nature cam — it's wrong. It should look like **someone made it by hand, and cut a hole in it so you could see the bats.**
+
+---
+
+## Changelog
+
+**v2.1 (2026-07-17) — the barn scene hero.** The Barn page's text hero
+("How many bats…" + blank) is replaced by a full-width cut-paper
+**barn scene**: a 1200×640 SVG diorama (backdrop disc + wind swirls, ground
+mound, curly bare trees, one unified barn silhouette with kraft trim, cupola
+with a bat weathervane) with the live window cut into the hayloft — same
+hand-cut clip + inner shadow as ever, so the footage stays the only real
+thing in a made thing. Bats fly on SMIL motion paths with CSS wing-flaps;
+the Motion toggle swaps the flock for a still one (`.bats-fly` /
+`.bats-static`). The stamp desk (stamp + keep + tally sheet) moves to its
+own section directly below. On <md viewports the scene yields to the plain
+window. The colony question lives on in the About page copy.
