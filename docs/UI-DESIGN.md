@@ -241,3 +241,10 @@ spotlight, the hand-cut window dead center at ~86% of the hero height, and
 the flock circling it. No caption, no frame, no illustration furniture.
 The Porch is hidden by default — a paper button (top-right) slides it in
 over the scene; the window never moves.
+
+**v2.6 (2026-07-17) — provenance.** Top-left hero vignette (≥1600px): a
+small ink barn with an open loft mouth and bats shrinking along a dashed
+trail toward the window — the story of the site in one glyph. Partnership
+stated with the real marks: Great Parks × University of Cincinnati logos
+(`public/logos/`, mix-blend-multiply so they sit as ink on the paper) in
+the status band (compact) and the footer (full, with the team line).

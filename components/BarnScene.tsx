@@ -115,6 +115,40 @@ export default function BarnScene({
         <LiveStream site={site} night={night} frameless />
       </div>
 
+      {/* Top-left vignette: the barn itself, letting the flock out.
+          Shown only when the margin beside the window has room for it. */}
+      <div
+        className="absolute hidden min-[1600px]:block"
+        style={{ left: "1.5%", top: "7%", height: "clamp(100px, 18cqh, 160px)" }}
+        aria-hidden="true"
+      >
+        <svg viewBox="0 0 240 200" className="h-full w-auto">
+          {/* dashed flight trail rising toward the window */}
+          <path
+            d="M118,92 Q 160,56 208,28"
+            fill="none"
+            stroke="var(--edge)"
+            strokeWidth="2.5"
+            strokeDasharray="1 9"
+            strokeLinecap="round"
+          />
+          {/* little barn, ink silhouette */}
+          <path
+            d="M26,186 L26,120 L12,120 L64,68 L92,58 L112,58 L140,68 L192,120 L178,120 L178,186 Z"
+            fill="var(--ink)"
+          />
+          {/* open loft mouth they pour out of */}
+          <path d="M86,94 L120,94 L120,126 L86,126 Z" fill="var(--paper)" />
+          {/* ground */}
+          <line x1="6" y1="186" x2="204" y2="186" stroke="var(--edge)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* leaving, shrinking with distance */}
+          <g transform="translate(112,108) rotate(24) scale(0.11)"><BatShape /></g>
+          <g transform="translate(146,82) rotate(18) scale(0.2)"><BatShape /></g>
+          <g transform="translate(184,50) rotate(6) scale(0.14)"><BatShape /></g>
+          <g transform="translate(216,26) rotate(-4) scale(0.1)"><BatShape /></g>
+        </svg>
+      </div>
+
       {/* The flock. */}
       <svg
         viewBox="0 0 1600 850"

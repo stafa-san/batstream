@@ -1,5 +1,6 @@
 import { getSite, getTonight, SITE_SLUG } from "@/lib/data";
 import BarnHero from "@/components/BarnHero";
+import PartnerStrip from "@/components/PartnerStrip";
 import StampButton from "@/components/StampButton";
 import TallySheet from "@/components/TallySheet";
 import StatusLine from "@/components/StatusLine";
@@ -24,12 +25,15 @@ export default async function BarnPage() {
 
       {/* ============ Status + the stamp desk — one continuous band ============ */}
       <section className="border-b border-edge bg-paper-2 pb-10">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-edge/60 px-5 py-3 sm:px-8">
-          <StatusLine site={site} night={night} />
-          <p className="hidden text-[0.85rem] text-ink-3 md:block">
-            {site.name} · location protected
-            {!site.streamUrl ? " · demo footage until the barn camera is connected" : ""}
-          </p>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-10 gap-y-4 border-b border-edge/60 px-5 py-4 sm:px-8">
+          <div className="min-w-0">
+            <StatusLine site={site} night={night} />
+            <p className="mt-1 text-[0.85rem] text-ink-3">
+              {site.name} · location protected
+              {!site.streamUrl ? " · demo footage until the barn camera is connected" : ""}
+            </p>
+          </div>
+          <PartnerStrip compact />
         </div>
         <div className="pt-10">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
